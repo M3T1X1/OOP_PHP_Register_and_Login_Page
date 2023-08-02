@@ -7,6 +7,7 @@ class Database
     private $db_password = DB_PASSWORD;
     private $db_name = DB_NAME;
 
+    public $conn;
     private $db_Handler;
     private $db_error;
    
