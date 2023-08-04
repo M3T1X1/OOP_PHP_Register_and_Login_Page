@@ -1,6 +1,7 @@
 <?php
 require_once 'includes/Db.php';
 require_once 'includes/Config.php';
+require_once 'includes/Register.php'
 ?>
 
 <!DOCTYPE html>
@@ -11,14 +12,32 @@ require_once 'includes/Config.php';
     <title>REGISTER PAGE</title>
 </head>
 <body>
-<form action = "Config.php" method="post">
+<form action = "register_page.php" method="post">
 Email:<br>
 <input type="text" name="email"><br>
 Username:<br>
 <input type="text" name="username"><br>
 Password:<br>
 <input type="password" name="password"><br>
+<br>
+<input type="submit" name="register" value="Register Now!">
 
 </form>
 </body>
 </html>
+
+<?php
+$db = new Database;
+$db->connect();
+
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{
+
+    if(isset($_POST["register"]))
+    {
+        $user= new User;
+        $user->registerIn();
+    
+    }
+}
+?>

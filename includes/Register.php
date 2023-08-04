@@ -8,18 +8,24 @@ class User extends Database
     private $username; 
     private $password;
     
+    
 
-        protected function __construct()
+        public function __construct()
         {
             $this->email = filter_input(INPUT_POST,"email",FILTER_SANITIZE_EMAIL);;
             $this->username =filter_input(INPUT_POST,"username",FILTER_SANITIZE_SPECIAL_CHARS);
             $this->password = password_hash($_POST["password"], PASSWORD_DEFAULT);
         }
 
-        protected function LogIn($email, $username, $password)
+        public function registerIn()
         {
-    
-            $query_insert = "INSERT INTO users ('username', 'password', 'email') VALUES ($this->email,$this->username,$this->password)";
-            PDO::query($query_insert);
+
+            $query_insert = "INSERT INTO users (username, password, email) VALUES ('$this->username', '$this->password', '$this->email')";
+            $query = "SELECT * FROM users";
+
+            $stmt = $this->pdo->query($query);
+           
+            
+            
         }
 }
