@@ -7,27 +7,17 @@ class Database
     private $db_password = DB_PASSWORD;
     private $db_name = DB_NAME;
 
-    public $conn;
-    private $db_Handler;
-    private $db_error;
-   
-
     public function connect()
     {
-      $conn = 'mysql:host='.$this->db_host.';dbname='.$this->db_name;  
-
-      $options = array(
-         PDO::ATTR_PERSISTENT=>true,
-         PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION
-      );
-      
       try
       {
-        $this->db_Handler = new PDO($conn, $this->db_user,$this->db_password,$options);
+        $conn =new PDO('mysql:host='.$this->db_host.';dbname='.$this->db_name,$this->db_user,$this->db_password);  
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       }
+      
       catch(PDOException $e)
       {
-       die("Not connected: ".$e->getMessage());
+        die("Not connected: ".$e->getMessage());
       }
         
     }
