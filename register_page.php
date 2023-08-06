@@ -1,7 +1,10 @@
 <?php
 require_once 'includes/Db.php';
 require_once 'includes/Config.php';
-require_once 'includes/Register.php'
+require_once 'includes/Register.php';
+require_once 'includes/Register_controler.php';
+$db = new Database;
+$db->connect();
 ?>
 
 <!DOCTYPE html>
@@ -20,24 +23,9 @@ Username:<br>
 Password:<br>
 <input type="password" name="password"><br>
 <br>
-<input type="submit" name="register" value="Register Now!">
+<input type="submit" name="register_btn" value="Register Now!">
 
 </form>
 </body>
 </html>
 
-<?php
-$db = new Database;
-$db->connect();
-
-if($_SERVER["REQUEST_METHOD"] == "POST")
-{
-
-    if(isset($_POST["register"]))
-    {
-        $user= new User;
-        $user->registerIn();
-    
-    }
-}
-?>

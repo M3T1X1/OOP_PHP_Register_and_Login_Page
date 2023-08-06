@@ -8,8 +8,6 @@ class Database
     private $db_user = DB_USER;
     private $db_password = DB_PASSWORD;
     private $db_name = DB_NAME;
-    
-    public $pdo;
 
     public function connect()
     {
@@ -18,7 +16,6 @@ class Database
          $dsn ='mysql:host='.$this->db_host.';dbname='.$this->db_name;
          $pdo =new PDO($dsn,$this->db_user,$this->db_password);  
          $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-        
         }
         catch(PDOException $e)
         {
