@@ -2,7 +2,7 @@
 require_once("Db.php");
 require_once("Config.php");
 
-class User
+class User extends Database
 {
  
     private $email;
@@ -19,11 +19,8 @@ class User
       
         public function registerIn()
         {
-           global $pdo;
+            $query_insert = "INSERT INTO users (username, password, email) VALUES ()";
 
-            $query_insert = "INSERT INTO users (username, password, email) VALUES ('$this->username','$this->password','$this->email')";
-          
-            $stmt=$pdo->prepare($query_insert);
-            $stmt->execute();
+            $this->connect()->query($query_insert);
         }
 }
