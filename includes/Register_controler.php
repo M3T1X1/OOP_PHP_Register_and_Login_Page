@@ -11,7 +11,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
        $username = $_POST["username"];
        $password = password_hash($_POST["password"],PASSWORD_DEFAULT);
 
-       $user = new User($email,$username,$password);
+       $user = new Register($email,$username,$password);
        $user->registerIn($email,$username,$password);
     }
 }

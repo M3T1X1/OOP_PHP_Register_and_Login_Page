@@ -5,9 +5,9 @@ require_once("Config.php");
 class User extends Database
 {
  
-    private $email;
-    private $username; 
-    private $password;
+    protected $email;
+    protected $username; 
+    protected $password;
     
         public function __construct($email,$username,$password)
         {
@@ -16,11 +16,15 @@ class User extends Database
             $this->$password =$password;
             
         }
-      
-        public function registerIn()
-        {
-            $query_insert = "INSERT INTO users (username, password, email) VALUES ()";
+        
+}
 
-            $this->connect()->query($query_insert);
-        }
+Class Register extends User
+{
+    public function registerIn($username,$password,$email) 
+    {
+        $query_insert = "INSERT INTO users (username, password, email) VALUES ('$username','$password','$email')";
+
+        $this->connect()->query($query_insert);
+    }
 }
