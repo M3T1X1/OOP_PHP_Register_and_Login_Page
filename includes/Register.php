@@ -22,28 +22,29 @@ class User extends Database
 
 Class Register extends User
 {
-    public function registerIn($username,$password,$email) 
+    public function registerIn($email,$username,$password) 
     {
-        $query_insert = "INSERT INTO users (username, password, email) VALUES ('$username','$password','$email')";
-        $stmt_insert = $this->connect()->query($query_insert);
-
-        $query_email= "SELECT * FROM users WHERE username = '$email'";
-        $stmt_select_email = $this->connect()->query($query_email);
-
-        $query_user= "SELECT * FROM users WHERE username = '$username'";
-        $stmt_select_user = $this->connect()->query($query_user);
-
+        $query_insert = "INSERT INTO users (email, password, username) VALUES ('$email','$password','$username')";
         
 
-        if(mysqli_num_rows($stmt_select_email) > 1)
-        { 
-            exit("That email is already taken!");
-        }
-/*
-        if(mysqli_num_rows($stmt_select_user) > 1)
-        {
-            echo "This user already exists!";
-        }
-*/        
+        $query_select_username = "SELECT * FROM users WHERE username = '$username'";
+        $stmt_select_username = $this->connect()->query($query_select_username);
+
+        $query_select_email = "SELECT * FROM users WHERE email = '$email'";
+        $stmt_select_email = $this->connect()->query($query_select_email);
+
+            if(mysqli_num_rows($stmt_select_username) >= 1)
+            {
+            echo "User exists";
+            }
+
+            if(mysqli_num_rows($stmt_select_email) >= 1)
+            {
+             echo "Email exists";
+            }
+       
+    
+
+   
     }
 }
