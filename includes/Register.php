@@ -27,26 +27,23 @@ Class Register extends User
        $query_e = "SELECT * FROM users WHERE email = '$email'";
        $query_e_result = $this->connect()->query($query_e);
 
-       $query_u = "SELECT * FROM users WHERE email = '$email'";
-       $query_u_result = $this->connect()->query($query_e);
+       $query_u = "SELECT * FROM users WHERE username = '$username'";
+       $query_u_result = $this->connect()->query($query_u);
        
        if(mysqli_num_rows($query_e_result) > 0)
        {
-        echo "Email already taken!";
-       }
+        mysqli_report(MYSQLI_REPORT_OFF);
+        echo "Email already taken!"."<br>";
+       };
        if(mysqli_num_rows($query_u_result) > 0)
        {
-        echo "User already taken!";
+        mysqli_report(MYSQLI_REPORT_OFF);
+        echo "Username already taken!"."<br>";
        }
         else
         {
         $query_insert = "INSERT INTO users (email, password, username) VALUES ('$email','$password','$username')";
         $this->connect()->query($query_insert);
         }
-        
-
-    
-
-   
     }
 }
