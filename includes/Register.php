@@ -24,19 +24,26 @@ Class Register extends User
 {
     public function registerIn($email,$username,$password) 
     {
+       $query_e = "SELECT * FROM users WHERE email = '$email'";
+       $query_e_result = $this->connect()->query($query_e);
+
+       $query_u = "SELECT * FROM users WHERE email = '$email'";
+       $query_u_result = $this->connect()->query($query_e);
        
-       
-       
-       
-       
-       
-        /*
+       if(mysqli_num_rows($query_e_result) > 0)
+       {
+        echo "Email already taken!";
+       }
+       if(mysqli_num_rows($query_u_result) > 0)
+       {
+        echo "User already taken!";
+       }
         else
         {
         $query_insert = "INSERT INTO users (email, password, username) VALUES ('$email','$password','$username')";
-        $stmt_insert = $this->connect()->query($query_insert);
+        $this->connect()->query($query_insert);
         }
-        */
+        
 
     
 
