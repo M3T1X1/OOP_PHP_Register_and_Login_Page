@@ -2,7 +2,7 @@
 require_once("Db.php");
 require_once("Config.php");
 
-class User extends Database
+class UserRegister extends Database
 {
  
     protected $email;
@@ -11,16 +11,16 @@ class User extends Database
     
         public function __construct($email,$username,$password)
         {
-            $this->$email = $email;
-            $this->$username = $username;
-            $this->$password =$password;
+            $this->email = $email;
+            $this->username = $username;
+            $this->password =$password;
             
         }
         
 }
 
 
-Class Register extends User
+Class Register extends UserRegister
 {
     public function registerIn($email,$username,$password) 
     {

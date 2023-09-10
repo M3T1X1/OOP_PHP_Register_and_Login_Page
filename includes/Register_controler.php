@@ -1,6 +1,6 @@
 <?php 
-include_once 'Config.php';
 include_once 'Db.php';
+include_once 'Config.php';
 include_once 'Register.php';
 
 if($_SERVER["REQUEST_METHOD"] == "POST")

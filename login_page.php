@@ -1,6 +1,10 @@
 <?php
 require_once 'includes/Db.php';
 require_once 'includes/Config.php';
+require_once 'includes/Login.php';
+require_once 'includes/Login_controler.php';
+$db= new Database;
+$db->connect();
 ?>
 
 <!DOCTYPE html>
@@ -12,5 +16,11 @@ require_once 'includes/Config.php';
 </head>
 <body>
     <form action = "Config.php" method="post">
+        Username: <br>
+    <input type="text" name="username"><br>
+        Password: <br>
+    <input type="password" name="password"><br>
+    <input type="submit" name="login_btn" value="Log in now!">
+    </form>
 </body>
 </html>
