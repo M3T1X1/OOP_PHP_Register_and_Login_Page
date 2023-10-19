@@ -15,7 +15,7 @@ $db->connect();
     <title>LOG IN PAGE</title>
 </head>
 <body>
-    <form action = "Config.php" method="post">
+    <form action = "login_page.php" method="post">
         Username: <br>
     <input type="text" name="username"><br>
         Password: <br>
