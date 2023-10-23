@@ -20,17 +20,19 @@ Class LogIn extends UserLogin
     {
         $query = "SELECT * FROM users WHERE username = '$username'";
         $result = $this->connect()->query($query);
+        $row = mysqli_fetch_assoc($result);
 
-        if(password_verify($_POST["password"],$password) == true & mysqli_num_rows($result) > 0)
+        if(mysqli_num_rows($result) > 0)
         {
-            session_start();
-            echo "User exists and password validation came throught";
+            echo "User exists";
+            echo "<br/>";
+            return;
         }
-        else
-        {
-            echo"Either password validation is wrong or the user does not exists";
+        if(password_verify($_POST["password"],$row['password']))
+        {   
+            echo "Password is correct";
         }
-
-        
+        print_r($row['password']);
     }
+ 
 }
