@@ -25,7 +25,7 @@ Class LogIn extends UserLogin
         {
             echo "User exists";
             echo "<br/>";
-
+            
             if(password_verify($_POST["password"],$row["password"]))
             {
                 session_start();
